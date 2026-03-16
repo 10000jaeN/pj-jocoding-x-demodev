@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function Curriculum() {
   const [currentTap, setCurrentTap] = useState<number>(0);
 
-  const items = [
+  const curriculums = [
     { title: "AI 생태계 이해 & LLM 활용" },
     { title: "프롬프트 엔지니어링 & AI 도구 심화" },
     { title: "기업 AX 진단" },
@@ -28,7 +28,7 @@ export default function Curriculum() {
     <div className="relative flex h-full gap-4">
       <div className="vertical-dashed-border absolute left-[11px] h-full w-[1px]" />
       <div className="flex shrink-0 flex-col gap-1.5">
-        {items.map((item, idx) => (
+        {curriculums.map((item, idx) => (
           <div
             key={item.title}
             className={`flex items-center gap-4`}
@@ -42,7 +42,7 @@ export default function Curriculum() {
               />
             </span>
             <div
-              className={`flex w-full flex-col rounded-xl px-7 py-4 transition-colors duration-300 ${currentTap === idx ? "bg-[#7017BF]" : "hover:bg-[#2D0056]"}`}
+              className={`flex w-full cursor-pointer flex-col rounded-xl px-7 py-4 transition-colors duration-300 ${currentTap === idx ? "bg-[#7017BF]" : "hover:bg-[#2D0056]"}`}
             >
               <span className="text-sm text-[#D8D8D8]">{idx + 1}주차</span>
               <span className="text-lg text-white">{item.title}</span>

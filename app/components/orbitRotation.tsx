@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const items = [
+const rotationIcon = [
   { name: "경영기획", icon: "/icons/icon-cp.svg", color: "bg-[#7059F6]" },
   { name: "CS", icon: "/icons/icon-cs.svg", color: "bg-[#1072E9]" },
   { name: "디자인", icon: "/icons/icon-ds.svg", color: "bg-[#1072E9]" },
@@ -31,8 +31,8 @@ export default function OrbitRotation({ className }: { className?: string }) {
             <div className="absolute right-0 left-44 h-4 w-4 rounded-full border-2 border-[#7017BF]/40 bg-[#2B1341]" />
 
             <div className="absolute h-[338px] w-[338px] translate-[75px] rounded-full bg-gradient-to-t from-[#7017BF] to-[#A75AEA]">
-              {items.map((item, i) => {
-                const angle = (i / items.length) * 2 * Math.PI; // 360도를 11등분
+              {rotationIcon.map((item, i) => {
+                const angle = (i / rotationIcon.length) * 2 * Math.PI; // 360도를 11등분
                 const x = radius * Math.cos(angle);
                 const y = radius * Math.sin(angle);
 
