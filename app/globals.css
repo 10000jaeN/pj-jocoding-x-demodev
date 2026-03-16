@@ -51,6 +51,10 @@
     background-size: 2px 20px;
     background-repeat: repeat-y;
   }
+
+  .clip-polygon-down {
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  }
 }
 
 body {
