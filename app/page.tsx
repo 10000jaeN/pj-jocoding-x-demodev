@@ -4,35 +4,25 @@ import TextChanger from "./components/text-changer";
 import Nav from "./components/nav";
 import OrbitRotation from "./components/orbitRotation";
 import Curriculum from "./components/curriculum";
-
-const beforeEducation = [
-  { title: "이전 교육" },
-  { title: "툴 설명" },
-  { title: "이론" },
-  { title: "강의 중심" },
-  { title: "간단한 실습" },
-];
-
-const axMasterEducation = [
-  { title: "AX Master" },
-  { title: "실제 기업 사례 실습" },
-  { title: "제안/발표" },
-  { title: "전문가 심사" },
-  { title: "자격증 취득" },
-];
+import ClipPicketUi from "./components/clipPicketUi";
+import {
+  axMasterEducation,
+  beforeEducation,
+  courseStructure,
+} from "./constants";
 
 export default function Home() {
   return (
     <main className="w-full">
       {/* Hero Section */}
-      <section>
-        <div className="relative flex h-160 w-full flex-col items-center justify-center gap-[30px] overflow-hidden bg-black">
+      <section className="bg-[black]">
+        <div className="relative mx-auto flex h-160 w-full max-w-[1280px] flex-col items-center justify-center gap-[30px] overflow-hidden">
           <Image
             src={"/background/landing-1.png"}
             alt="background image for hero section"
             width={1280}
             height={640}
-            className="absolute z-0 mx-auto w-full max-w-[1280px] min-w-250 object-cover"
+            className="absolute z-0 w-full min-w-250 object-cover"
             priority
           />
           <span className="relative z-10 rounded-sm bg-linear-to-l from-[#FBB03B] to-[#7017BF] px-[23px] py-[7px] text-[20px]">
@@ -41,6 +31,8 @@ export default function Home() {
           <h1 className="z-10 text-[80px] font-extrabold">
             AX Master <br /> 양성교육과정
           </h1>
+          <div className="absolute top-0 left-0 h-full w-10 from-transparent to-black xl:bg-gradient-to-l" />
+          <div className="absolute top-0 right-0 h-full w-10 from-transparent to-black xl:bg-gradient-to-r" />
         </div>
         <div className="z-10 flex h-[300px] flex-col items-center justify-center gap-10 bg-[#1A1121] text-xl font-bold text-[#B16CEF]">
           <div className="flex items-center gap-10">
@@ -74,11 +66,31 @@ export default function Home() {
 
       <Nav />
 
-      <section className="flex flex-col bg-white pb-24 text-black">
+      <section className="flex flex-col overflow-hidden bg-[#FAFAFA] pb-24 text-black">
         <div className="flex h-20 w-full items-center justify-center gap-12 bg-[#FF2222] text-[28px] font-bold text-white">
-          <Image src={"/Polygon.svg"} width={32} height={32} alt="polygon" />
+          <div
+            className="bg-white"
+            style={{
+              width: "32px",
+              height: "32px",
+              WebkitMaskImage: 'url("/Polygon.svg")',
+              maskImage: 'url("/Polygon.svg")',
+              maskSize: "contain",
+              maskRepeat: "no-repeat",
+            }}
+          />
           AI를 써봤는데, 활용할줄 모른다면?
-          <Image src={"/Polygon.svg"} width={32} height={32} alt="polygon" />
+          <div
+            className="bg-white"
+            style={{
+              width: "32px",
+              height: "32px",
+              WebkitMaskImage: 'url("/Polygon.svg")',
+              maskImage: 'url("/Polygon.svg")',
+              maskSize: "contain",
+              maskRepeat: "no-repeat",
+            }}
+          />
         </div>
         <div className="mt-30 flex flex-col items-center justify-center gap-3">
           <p className="text-2xl font-medium text-[#808080]">
@@ -93,6 +105,69 @@ export default function Home() {
             이 바뀌고 있습니다.
           </h2>
         </div>
+        <div className="relative my-5 mb-20 flex shrink-0 items-center justify-center gap-7">
+          <div className="relative flex flex-col items-center gap-7.5">
+            <Image
+              src={"/icons/change-1.svg"}
+              alt=""
+              width={140}
+              height={140}
+            />
+            <p className="text-xl text-[#737373]">수기로 작성</p>
+            <div className="absolute bottom-14 h-5 w-full bg-gradient-to-b to-[#FAFAFA]" />
+            <div className="absolute right-0 h-full w-10 bg-gradient-to-r to-[#FAFAFA]" />
+          </div>
+          <div className="relative ml-5">
+            <Image
+              src={"/icons/change-0-1.svg"}
+              alt=""
+              width={80}
+              height={70}
+            />
+            <p className="absolute top-1/2 right-3 -translate-1/2 text-xl font-bold text-white">
+              DX
+            </p>
+          </div>
+          <div className="relative flex flex-col items-center gap-5">
+            <Image
+              src={"/icons/change-2.svg"}
+              alt=""
+              width={161}
+              height={161}
+            />
+            <p className="text-xl text-[#737373]">데이터 실시간 관리</p>
+            <div className="absolute bottom-12 h-5 w-full bg-gradient-to-b to-[#FAFAFA]" />
+            <div className="absolute top-0 right-0 h-40 w-10 bg-gradient-to-r to-[#FAFAFA]" />
+          </div>
+          <div className="relative mx-15">
+            <Image
+              src={"/icons/change-0-2.svg"}
+              alt=""
+              width={101}
+              height={88}
+            />
+            <p className="absolute top-1/2 right-3 -translate-1/2 text-xl font-bold text-white">
+              AX
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="relative z-10 flex flex-col items-center gap-1">
+              <Image
+                src={"/icons/change-3.svg"}
+                alt=""
+                width={272}
+                height={272}
+                className="[mask-image:linear-gradient(to_right,_black_89%,_transparent_100%),_linear-gradient(to_bottom,_black_80%,_transparent_100%)] [mask-composite:intersect]"
+              />
+              <p className="text-[28px] font-semibold text-white">자동화</p>
+            </div>
+            <div className="absolute -top-5 -left-20 z-0 h-105 w-115 overflow-hidden bg-radial from-[#7017BF] to-70%">
+              <div className="h-full w-full backdrop-blur-sm" />
+            </div>
+          </div>
+        </div>
+
         <div className="flex flex-col items-center gap-10 py-22">
           <div className="h-5 w-5 rounded-full bg-[#7017BF]/20" />
           <div className="h-5 w-5 rounded-full bg-[#7017BF]/50" />
@@ -128,6 +203,70 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="flex flex-col items-center gap-[66px] bg-white px-25 py-30 text-black">
+        <div className="flex flex-col items-center gap-4">
+          <p className="text-[28px] font-semibold text-[#7017BF]">
+            AI 활용 업무 역량 완성
+          </p>
+          <h2 className="text-[64px] leading-[120%] font-bold">
+            이런 사람에게 추천해요
+          </h2>
+        </div>
+        <div className="flex gap-6">
+          <div className="flex h-90 flex-col items-center justify-between rounded-xl border border-black/10 bg-[#FAFAFA] px-15 pt-7 pb-9">
+            <p className="flex flex-col items-center justify-center gap-4 text-2xl font-bold">
+              <span className="rounded-full bg-[#F4EAFD] px-5 py-[10px] text-xl font-semibold text-[#7017BF]">
+                #업무 자동화
+              </span>
+              업무에 활용하고 싶은 분
+            </p>
+            <Image
+              src={"/icons/icon-puzzle.svg"}
+              alt="puzzle icon"
+              width={76}
+              height={85}
+            />
+            <p className="text-center text-xl leading-[120%]">
+              &ldquo;AI를 써봤지만 <br /> 업무에 적용하기 어려워요&ldquo;
+            </p>
+          </div>
+          <div className="flex h-90 flex-col items-center justify-between rounded-xl border border-black/10 bg-[#FAFAFA] px-15 pt-7 pb-9">
+            <p className="flex flex-col items-center justify-center gap-4 text-2xl font-bold">
+              <span className="rounded-full bg-[#B675EF] px-5 py-[10px] text-xl font-semibold text-white">
+                #실전학습
+              </span>
+              업무에 활용하고 싶은 분
+            </p>
+            <Image
+              src={"/icons/icon-folder.svg"}
+              alt="folder icon "
+              width={76}
+              height={85}
+            />
+            <p className="text-center text-xl leading-[120%]">
+              &ldquo;툴 설명 말고 <br /> 실전으로 배우고싶어요&ldquo;
+            </p>
+          </div>
+          <div className="flex h-90 flex-col items-center justify-between rounded-xl border border-black/10 bg-[#FAFAFA] px-15 pt-7 pb-9">
+            <p className="flex flex-col items-center justify-center gap-4 text-2xl font-bold">
+              <span className="rounded-full bg-[#7017BF] px-5 py-[10px] text-xl font-semibold text-white">
+                #포트폴리오
+              </span>
+              AI 역량을 증명하고 싶은 분
+            </p>
+            <Image
+              src={"/icons/icon-trophy.svg"}
+              alt="trophy icon "
+              width={76}
+              height={85}
+            />
+            <p className="text-center text-xl leading-[120%]">
+              &ldquo;프로젝트 결과와 자격증을 <br /> 만들고 싶어요&ldquo;
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="py-25">
         <h2 className="flex flex-col items-center text-[64px] font-bold">
           AI를 일하게 하는
@@ -139,12 +278,13 @@ export default function Home() {
           채용 우대사항에도 등장한 AI활용 역량
         </p>
 
-        <div className="relative my-20 h-320 w-full">
+        <div className="relative mx-auto my-20 w-full max-w-[1280px]">
           <Image
             src={"/background/landing-4.png"}
             alt="background image"
-            fill
-            className="mx-auto max-w-[1280px] object-cover"
+            width={1116}
+            height={1025}
+            className="w-full [mask-image:linear-gradient(to_left,_black_89%,_transparent_100%),_linear-gradient(to_right,_black_80%,_transparent_100%)] [mask-composite:intersect] object-cover"
           />
         </div>
 
@@ -163,8 +303,8 @@ export default function Home() {
           <div className="absolute inset-0 -z-10 bg-radial from-[#38224B]/40 from-10% via-[#111111] to-[#111111]" />
         </div>
 
-        <div className="flex flex-col items-center justify-center font-extrabold">
-          <span className="text-[48px]">이런 고민들이 ‘내 이야기 같다’면,</span>
+        <div className="flex flex-col items-center justify-center text-[48px] font-extrabold">
+          이런 고민들이 ‘내 이야기 같다’면,
           <span className="bg-gradient-to-b from-white to-[#FBB03B] bg-clip-text text-[72px] text-transparent">
             지금이 당신을 위한 기회입니다!
           </span>
@@ -179,7 +319,7 @@ export default function Home() {
           <span className="flex flex-col items-center text-[28px] font-semibold">
             <p>시대의 흐름에 맞춰,</p>
             <p className="flex">
-              실제&nbsp;<p className="text-[#FF0A0A]">AI 활용</p>을 겸험해보세요
+              실제<p className="text-[#FF0A0A]">&nbsp;AI 활용</p>을 겸험해보세요
             </p>
           </span>
           <div
@@ -263,7 +403,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="flex flex-col items-center justify-center bg-white text-black">
+      <section className="flex flex-col items-center justify-center bg-white pb-15 text-black">
         <h2 className="mt-20 mb-4 text-[64px] font-bold">
           수강생이 아닌
           <span className="text-[#FBB03B]"> &apos;전문가&apos;</span>를
@@ -273,9 +413,110 @@ export default function Home() {
           기업 프로젝트와 전문가 심사를 거쳐, 당신의 실무 역량을 자격증으로
           증명할 수 있도록!
         </span>
+        <div className="my-20 flex items-center gap-15.5">
+          <div className="flex flex-col gap-2">
+            {beforeEducation.map((education, idx) => (
+              <div
+                key={education.title}
+                className={`flex h-31 w-110 items-center justify-center rounded-xl text-[36px] font-bold ${idx === 0 ? "bg-[#C4C4C4] text-white" : "bg-[#EBEBEB] text-[#737373]"} `}
+              >
+                {education.title}
+              </div>
+            ))}
+          </div>
+
+          <div>
+            <Image
+              src={"/polygon-right-yellow.svg"}
+              alt="polygon-right"
+              height={303}
+              width={75}
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            {axMasterEducation.map((education, idx) => (
+              <div
+                key={education.title}
+                className={`flex h-31 w-110 items-center justify-center rounded-xl text-[36px] font-bold ${idx === 0 ? "bg-[#FBB03B] text-white" : "bg-[#FFECCD] text-black"} `}
+              >
+                {education.title}
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      <section className="bg-white">
+      <section className="relative flex flex-col items-center bg-white py-17 text-black">
+        <h2 className="text-center text-[64px] font-bold">
+          실무에 쓸 수 없는 AI 교육은
+          <br /> 의미 없습니다.
+        </h2>
+        <p className="mt-4 text-2xl text-[#737373]">
+          체계적인 학습으로 AI 능력 완성할 수 있도록 구성했습니다.
+        </p>
+        <div className="absolute h-100 w-250 -translate-x-110 translate-y-120 -rotate-5 bg-radial from-[#EEDAFF]/60 to-transparent to-80%" />
+        <div className="absolute h-100 w-300 translate-x-110 translate-y-60 -rotate-20 bg-radial from-[#EEDAFF]/60 to-transparent to-70%" />
+        <div className="relative my-14">
+          <div className="relative">
+            <Image
+              src={"/icons/icon-steps.svg"}
+              alt="steps"
+              width={1000}
+              height={143}
+            />
+            <div
+              className="absolute -top-1.5 -right-1 -rotate-90 bg-[#7017BF]"
+              style={{
+                width: "18px",
+                height: "14px",
+                WebkitMaskImage: 'url("/Polygon.svg")',
+                maskImage: 'url("/Polygon.svg")',
+                maskSize: "contain",
+                maskRepeat: "no-repeat",
+              }}
+            />
+          </div>
+
+          <div className="z-10 mt-5 flex gap-[15px]">
+            {courseStructure.map((course) => (
+              <div
+                className={`z-10 flex w-[238px] flex-col items-center ${course.translate}`}
+                key={course.title}
+              >
+                <div
+                  className={`w-full rounded-[10px] ${course.bg} py-4 text-center text-2xl font-bold text-white`}
+                >
+                  {course.title}
+                </div>
+                <div className="flex w-full flex-col items-center gap-4 divide-y-2 divide-[#E6E6E6] rounded-[10px] bg-white p-6 text-xl font-semibold">
+                  {course.list.map((l) => (
+                    <div key={l} className="w-full pb-4 text-center">
+                      {l}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <div className="absolute -top-1 -right-60">
+              <Image
+                src={"/icons/icon-footprint.svg"}
+                alt="Footprint"
+                width={257}
+                height={136}
+              />
+            </div>
+            <div className="absolute bottom-10 -left-50">
+              <Image
+                src={"/icons/icon-footprint.svg"}
+                alt="Footprint"
+                width={257}
+                height={136}
+              />
+            </div>
+          </div>
+        </div>
+
         <button className="flex gap-4 rounded-xl bg-[#111111] p-6 text-[32px] font-extrabold text-white">
           <Image
             src={"/arrow-down.svg"}
@@ -346,7 +587,7 @@ export default function Home() {
         <Curriculum />
 
         {/* 둘 */}
-        <div className="relative z-10 flex flex-col items-center justify-center gap-3">
+        <div className="relative z-10 mt-22.5 flex flex-col items-center justify-center gap-3">
           <span className="text-[28px] font-bold text-[#FBB03B]">둘,</span>
           <span className="text-[48px] font-bold">
             학습이 아닌, 누적 결과물 생성 시스템
@@ -361,34 +602,221 @@ export default function Home() {
           alt="background image"
           width={1452}
           height={666}
-          className="top-18 z-0 mx-auto w-full max-w-[1280px] -translate-y-10 object-cover"
+          className="z-0 mx-auto w-full max-w-[1280px] -translate-y-10 object-cover"
         />
-        <span className="bg-gradient-to-l from-[#FB3B3B] to-white bg-clip-text text-[80px] font-extrabold text-transparent">
+        <div
+          className="clip-polygon-down z-10 h-25 w-80 -translate-y-5 bg-gradient-to-t from-[#7017BF] to-[#1A1121]"
+          style={{ clipPath: "polygon(0% 0%, 100% 0%, 50% 100%)" }}
+        />
+        <div
+          className="clip-polygon-down h-25 w-80 -translate-y-11 bg-gradient-to-t from-[#7017BF] to-[#1A1121]"
+          style={{ clipPath: "polygon(0% 0%, 100% 0%, 50% 100%)" }}
+        />
+        <span className="mb-27 bg-gradient-to-l from-[#FB3B3B] to-white bg-clip-text text-[80px] font-extrabold text-transparent">
           12주 누적 포트폴리오 패키지
         </span>
-
-        {/* 셋 */}
-        <div className="relative z-10 my-40 flex flex-col items-center justify-center gap-3">
-          <span className="text-[28px] font-bold text-[#FBB03B]">셋,</span>
-          <span className="text-[48px] font-bold">자격증 발급</span>
-          <span className="text-2xl font-bold text-[#D8D8D8]">
-            우리는 실제 경험을 통한 결과물로 증명합니다
-          </span>
-        </div>
       </section>
 
-      <section className="flex flex-col items-center justify-center">
-        <div className="h-70 w-full bg-[linear-gradient(to_left,_#8160EF,_#7017BF,_#7017BF,_#8160EF)] text-center">
+      <div className="flex flex-col items-center justify-center">
+        <div className="flex h-70 w-full flex-col items-center bg-[linear-gradient(to_left,_#8160EF,_#7017BF,_#7017BF,_#8160EF)] pt-15">
           <p className="mb-[10px] text-xl text-[#E9E3EE]">
             AI 활용, 배우는 것에서 끝내지 마세요.
           </p>
-          <h2 className="text-4xl font-bold">
+          <h2 className="mb-5 text-center text-4xl font-bold">
             객관적인 피드백과 자격증 취득하는 경험,
             <br /> AX 파트너스에서만 가능합니다.
           </h2>
+          <Image
+            src={"/icons/icon-arrow-down.svg"}
+            alt={"arrow down"}
+            width={33}
+            height={33}
+          />
+        </div>
+      </div>
+
+      <section className="relative flex flex-col items-center justify-center overflow-hidden bg-gradient-to-t from-[#FEFEFE] to-[#F8F0FF] pt-22 text-black">
+        <div className="mb-25 flex flex-col items-center justify-center gap-4">
+          <span className="text-[28px] font-bold text-[#7017BF]">
+            어설픈 교육이 아닌,
+          </span>
+          <h2 className="text-[64px] font-extrabold">믿을 수 있는 검증 구조</h2>
+          <span className="text-center text-2xl">
+            수료가 아닌 검증, 심사를 통해 객관적인 피드백과 자격증을 제공합니다.
+          </span>
+        </div>
+        <div className="z-10 mb-16 flex justify-center gap-3.5">
+          <div className="flex max-w-[378px] flex-col items-center rounded-3xl bg-white px-8.25 py-10.5">
+            <span className="mb-3 rounded-full bg-[#7017BF] px-3 py-1.5 font-semibold text-white">
+              실전 경험
+            </span>
+            <span className="text-[28px] font-semibold">데모데이</span>
+            <div className="relative h-60">
+              <Image
+                src={"/background/image-demoday.svg"}
+                alt="image demoday"
+                width={158}
+                height={209}
+              />
+              <div className="absolute bottom-7 z-10 h-10 w-full bg-gradient-to-b from-transparent to-white" />
+            </div>
+            <p className="font-semibold text-[#737373]">
+              실제 비즈니스 현장과 유사한 발표 경험을 통해, AX 솔루션의 객관적
+              검증과 실전 감각을 완성해요.
+            </p>
+          </div>
+          <div className="flex max-w-[378px] flex-col items-center rounded-3xl bg-white px-8.25 py-10.5">
+            <span className="mb-3 rounded-full bg-[#7017BF] px-3 py-1.5 font-semibold text-white">
+              객관적 기준
+            </span>
+            <span className="text-[28px] font-semibold">민간 자격증 제공</span>
+            <div className="h-60">
+              <Image
+                src={"/background/image-license.svg"}
+                alt="image demoday"
+                width={201}
+                height={177}
+                className="mt-6 mb-[36px]"
+              />
+            </div>
+            <p className="font-semibold text-[#737373]">
+              현장의 시각과 시장의 냉철한 감각을 결합하여, 실무에서 바로 통하는
+              입체적인 피드백을 완성해요.
+            </p>
+          </div>
+          <div className="flex max-w-[378px] flex-col items-center justify-center rounded-3xl bg-white px-8.25 py-10.5">
+            <span className="mb-3 rounded-full bg-[#7017BF] px-3 py-1.5 font-semibold text-white">
+              전문가 피드백
+            </span>
+            <span className="text-[28px] font-semibold">강사 + 외부 심사</span>
+            <div className="relative h-60">
+              <Image
+                src={"/background/image-instructor.svg"}
+                alt="image demoday"
+                width={243}
+                height={207}
+              />
+              <div className="absolute bottom-8.5 z-10 h-10 w-full bg-gradient-to-b from-transparent to-white" />
+              <div className="absolute top-0 z-10 h-full w-full bg-[linear-gradient(to_left,_#fff,_#ffffff00_20%,_#ffffff00_85%,_#fff)]" />
+            </div>
+            <p className="flex justify-center font-semibold break-keep text-[#737373]">
+              실제 비즈니스 현장과 유사한 발표 경험을 통해, AX 솔루션의 객관적
+              검증과 실전 감각을 완성해요.
+            </p>
+          </div>
+        </div>
+        <div className="z-10">
+          <p className="text-center text-[32px]">
+            필요한 역량만 정확히 배워,
+            <br />
+            <span className="font-extrabold">실무로 바로 연결되는 경험</span>을
+            완성하세요
+          </p>
+          <button className="mt-20 mb-15 flex gap-4 rounded-xl bg-[#111111] p-6 pl-12 text-[32px] font-extrabold text-white">
+            강의듣고 AX 마스터하기
+            <Image
+              src={"/arrow-down.svg"}
+              alt="arrow down"
+              width={40}
+              height={40}
+              className="-rotate-90"
+            />
+          </button>
+        </div>
+
+        <div className="absolute bottom-0 left-1/2 z-0 -translate-x-1/2 translate-y-1/2">
+          <div className="relative h-[1150px] w-[1150px] rounded-full bg-[#EFDCFF]/12">
+            <div className="absolute h-[872px] w-[872px] translate-[139px] rounded-full bg-[#EFDCFF]/20" />
+            <div className="absolute h-[618px] w-[618px] translate-[266px] rounded-full bg-[#EFDCFF]/40" />
+            <div className="absolute h-[454px] w-[454px] translate-[348px] rounded-full bg-[#EFDCFF]/50" />
+            <div className="absolute h-[248px] w-[248px] translate-[452px] rounded-full bg-[#EFDEFE]/70" />
+          </div>
         </div>
       </section>
-      <section>10</section>
+
+      <div className="flex h-37 w-full justify-center bg-[#120C19]">
+        <div className="h-full w-320 bg-radial from-[#7017BF] to-[##1B1D1E] to-70% text-center">
+          <div className="h-full w-full pt-[26px] backdrop-blur-2xl">
+            <p>AI 활용은 실습이 아니라 실제 경험에서 완성된다.</p>
+            <p className="mt-4 text-xl font-semibold">
+              어필할 수 있는 <span className="text-[#FBB03B]">진짜 경험!</span>
+              <br />
+              지금 시작한 사람이 앞서갑니다.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <section className="flex flex-col items-center bg-[#FAFAFA] px-25 py-22.5 text-black">
+        <h2 className="text-center text-[64px] leading-[120%] font-bold">
+          수료생 한정!
+          <br />
+          <span className="bg-gradient-to-l from-[#9733F0] to-[#FFB746] bg-clip-text font-extrabold text-transparent">
+            AX 파트너스 인턴십 기회
+          </span>
+        </h2>
+
+        <div className="mt-25 flex items-center">
+          <ClipPicketUi className="flex h-[248px] items-center gap-4 px-10">
+            <Image
+              src={"/icons/icon-cap.svg"}
+              alt="graduation-cap"
+              width={89}
+              height={89}
+            />
+            <span className="flex flex-col gap-4 text-xl">
+              <p className="text-[28px] font-bold">수료</p>
+              수료생 대상
+              <br /> 인턴십 자격 부여
+            </span>
+          </ClipPicketUi>
+          <ClipPicketUi className="flex h-[248px] items-center gap-4 px-10">
+            <Image
+              src={"/icons/icon-meeting.svg"}
+              alt="icon-meeting"
+              width={89}
+              height={89}
+            />
+            <span className="flex flex-col gap-4 text-xl">
+              <p className="text-[28px] font-bold">지원 / 면접</p>
+              AX Partners
+              <br />
+              인턴십 지원
+            </span>
+          </ClipPicketUi>
+          <ClipPicketUi className="flex h-[248px] items-center gap-4 px-10">
+            <Image
+              src={"/icons/icon-paper.svg"}
+              alt="paper icon"
+              width={89}
+              height={89}
+            />
+            <span className="flex flex-col gap-4 text-xl">
+              <p className="text-[28px] font-bold">선발</p>
+              학습이력 및
+              <br />
+              지원서 기반 선발
+            </span>
+          </ClipPicketUi>
+        </div>
+        <div className="mt-4 mb-12 flex h-[250] w-full max-w-[1090px] items-center justify-between rounded-xl bg-gradient-to-l from-[#9B2AFF] to-[#581295] p-5 pl-10 text-white">
+          <p className="flex flex-col gap-4">
+            <span className="text-[48px] leading-[120%] font-extrabold">
+              최종 합격 후<br />
+              인턴 근무
+            </span>
+            <span className="text-2xl">
+              어필할 수 있는 진짜 경험을 통해 경력을 만들어보세요!
+            </span>
+          </p>
+          <Image
+            src={"/icons/icon-congratulations.svg"}
+            alt="Congratulations"
+            width={354}
+            height={209}
+          />
+        </div>
+      </section>
 
       <section id="Instructors" className="bg-white px-8 py-16 text-black">
         <div className="mb-20 flex flex-col items-center justify-center">
@@ -571,12 +999,80 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="QA">
-        <div className="flex flex-col items-center justify-center gap-2">
-          <span className="text-2xl text-[#FBB03B]">Q&A</span>
+      <section id="QA" className="flex flex-col items-center px-11 pt-3 pb-30">
+        <div className="my-20 flex flex-col items-center justify-center gap-2">
+          <span className="text-[28px] font-semibold text-[#FBB03B]">Q&A</span>
           <h2 className="text-[40px] font-bold">
             궁금해하시는 질문들만 모았습니다
           </h2>
+        </div>
+        <div className="mb-60 grid w-260 grid-cols-2 gap-9">
+          <div className="gpa-5 flex h-25 items-center justify-between rounded-xl bg-[#2D2D2D] px-10 text-2xl font-semibold">
+            Q1. 비전공자인데 따라갈 수 있을까요?
+            <Image
+              src={"/icons/icon-arrow-down.svg"}
+              alt=""
+              width={28}
+              height={28}
+            />
+          </div>
+          <div className="flex h-25 items-center justify-between rounded-xl bg-[#2D2D2D] px-10 text-2xl font-semibold">
+            Q1. 비전공자인데 따라갈 수 있을까요?
+            <Image
+              src={"/icons/icon-arrow-down.svg"}
+              alt=""
+              width={28}
+              height={28}
+            />
+          </div>
+          <div className="flex h-25 items-center justify-between rounded-xl bg-[#2D2D2D] px-10 text-2xl font-semibold">
+            Q1. 비전공자인데 따라갈 수 있을까요?
+            <Image
+              src={"/icons/icon-arrow-down.svg"}
+              alt=""
+              width={28}
+              height={28}
+            />
+          </div>
+          <div className="flex h-25 items-center justify-between rounded-xl bg-[#2D2D2D] px-10 text-2xl font-semibold">
+            Q1. 비전공자인데 따라갈 수 있을까요?
+            <Image
+              src={"/icons/icon-arrow-down.svg"}
+              alt=""
+              width={28}
+              height={28}
+            />
+          </div>
+          <div className="flex h-25 items-center justify-between rounded-xl bg-[#2D2D2D] px-10 text-2xl font-semibold">
+            Q1. 비전공자인데 따라갈 수 있을까요?
+            <Image
+              src={"/icons/icon-arrow-down.svg"}
+              alt=""
+              width={28}
+              height={28}
+            />
+          </div>
+          <div className="flex h-25 items-center justify-between rounded-xl bg-[#2D2D2D] px-10 text-2xl font-semibold">
+            Q1. 비전공자인데 따라갈 수 있을까요?
+            <Image
+              src={"/icons/icon-arrow-down.svg"}
+              alt=""
+              width={28}
+              height={28}
+            />
+          </div>
+        </div>
+        <div className="flex w-full max-w-260 justify-between rounded-xl bg-white px-12 py-6">
+          <div className="text-2xl font-semibold text-black">
+            12주 수 AI 포트폴리오 +{" "}
+            <span className="text-[#FBB03B]">자격증</span> 완성
+            <p className="mt-3 text-[16px] font-normal text-[#737373]">
+              AI 활용 마스터하고 AI 시대에서 살아남기
+            </p>
+          </div>
+          <button className="max-w-90 rounded-xl bg-[#7017BF] px-5 py-4 text-xl font-semibold text-white">
+            지금 시작하기
+          </button>
         </div>
       </section>
     </main>
